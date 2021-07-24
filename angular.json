@@ -63,7 +63,9 @@
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 }
-              ]
+              ],
+              "baseHref": "/ionic-course",
+              "deployUrl": "/ionic-course/"
             },
             "ci": {
               "progress": false
