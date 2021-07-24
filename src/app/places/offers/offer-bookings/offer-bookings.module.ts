@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { OfferBookingsPageRoutingModule } from './offer-bookings-routing.module';
 
 import { OfferBookingsPage } from './offer-bookings.page';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    RouterModule.forRoot([]),
     OfferBookingsPageRoutingModule
   ],
   declarations: [OfferBookingsPage]

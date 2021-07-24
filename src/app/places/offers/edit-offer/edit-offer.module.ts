@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { EditOfferPageRoutingModule } from './edit-offer-routing.module';
 
 import { EditOfferPage } from './edit-offer.page';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    RouterModule.forRoot([]),
     EditOfferPageRoutingModule
   ],
   declarations: [EditOfferPage]
