@@ -14,20 +14,18 @@ jobs:
         node-version: [12.x]
 
     steps:
-    - name: Use coturiv/setup-ionic
-      uses: coturiv/setup-ionic@v1
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
       with:
-        java-version: 8
-    - name: Use coturiv/setup-ionic
-      uses: coturiv/setup-ionic@v1
-      with:
-        cordova-version: 8
-
-    - name: Build
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build
       run: |
-        ionic init
-        ionic build --prod
-
+        npm install
+        npm run build --prod
+        cp -a www/index.html www/404.html
+      env:
+        CI: true
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
@@ -35,4 +33,3 @@ jobs:
         BRANCH: gh-pages
         FOLDER: www
         CLEAN: true
-
