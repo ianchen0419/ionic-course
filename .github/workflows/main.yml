@@ -25,6 +25,7 @@ jobs:
 
     - name: Build
       run: |
+        ionic init
         ionic build --prod
 
     - name: Deploy 🚀
