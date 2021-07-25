@@ -20,14 +20,15 @@ export class PlaceDetailPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(paramMap => {
-      if(!paramMap.has('placeId')){
+    this.route.params.subscribe(param => {
+      if(!param.placeId){
         this.navCtrl.navigateBack('/places/tabs/discover');
         return;
       }
 
-      this.place=this.placesService.getPlace(paramMap.get('placeId'));
+      this.place=this.placesService.getPlace(param.placeId);
     });
+
   }
 
   onBookPlace(){

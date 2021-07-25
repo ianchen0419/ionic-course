@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
+import { of } from 'rxjs';
 
 import { PlaceDetailPage } from './place-detail.page';
 
@@ -10,7 +13,13 @@ describe('PlaceDetailPage', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ PlaceDetailPage ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot(), RouterTestingModule],
+      providers: [{
+        provide: ActivatedRoute,
+        useValue: {
+          params: of({placeId: 'p1'})
+        }
+      }]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PlaceDetailPage);
