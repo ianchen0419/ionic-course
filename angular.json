@@ -28,7 +28,7 @@
               {
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
-                "output": "./svg"
+                "output": "./ionic-course/svg"
               }
             ],
             "styles": ["src/theme/variables.scss", "src/global.scss"],
@@ -62,18 +62,6 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
-                }
-              ],
-              "assets": [
-                {
-                  "glob": "favicon.ico",
-                  "input": "src/",
-                  "output": "/ionic-course/"
-                },
-                {
-                  "glob": "**/*",
-                  "input": "src/assets",
-                  "output": "/ionic-course/assets"
                 }
               ],
               "baseHref": "/ionic-course",
