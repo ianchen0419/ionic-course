@@ -64,8 +64,8 @@
                   "maximumError": "5mb"
                 }
               ],
-              "baseHref": "/ionic-course/",
-              "deployUrl": "/ionic-course"
+              "baseHref": "https://ianchen0419.github.io/ionic-course/",
+              "deployUrl": "/ianchen0419/ionic-course/"
             },
             "ci": {
               "progress": false
