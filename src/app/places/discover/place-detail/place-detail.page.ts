@@ -68,6 +68,8 @@ export class PlaceDetailPage implements OnInit {
     console.log(mode);
     this.modalCtrl.create({
       component: CreateBookingComponent,
+      // swipeToClose: true,
+      // showBackdrop: true,
       componentProps: {
         selectedPlace: this.place,
       },
