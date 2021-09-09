@@ -80,7 +80,7 @@
 
   /** toolbar **/
   --ion-toolbar-background: var(--ion-color-primary, rgb(var(--ion-color-primary-rgb)));
-  --ion-toolbar-color: var(--ion-color-primary-contrast, rgb(var(--ion-color-primary-contrast-rgb)));
+  --ion-toolbar-color: var(--ion-color-primary-contrast, rgb(var(--ion-color-primary-rgb)));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -241,3 +241,9 @@
     --ion-card-background: #1e1e1e;
   }
 }
+
+/** Component custom css variable **/
+// ion-button {
+//   --background: blue;
+//   --box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.6);
+// }
