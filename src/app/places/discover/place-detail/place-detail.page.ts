@@ -72,6 +72,7 @@ export class PlaceDetailPage implements OnInit {
       // showBackdrop: true,
       componentProps: {
         selectedPlace: this.place,
+        selectedMode: mode,
       },
       // id: 'm1'
     }).then(modalEl => {
