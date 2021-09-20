@@ -1,4 +1,7 @@
+/* eslint-disable no-underscore-dangle */
 import { Injectable } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { AuthService } from '../auth/auth.service';
 import { Place } from './place.model';
 
 @Injectable({
@@ -13,7 +16,8 @@ export class PlacesService {
       'https://imgs.6sqft.com/wp-content/uploads/2014/06/21042533/Carnegie-Mansion-nyc.jpg',
       149.99,
       new Date('2019-01-01'),
-      new Date('2019-12-31')
+      new Date('2019-12-31'),
+      'abc'
     ),
     new Place(
       'p2',
@@ -22,7 +26,8 @@ export class PlacesService {
       'https://live.staticflickr.com/614/31628747276_00dedc1560_b.jpg',
       189.99,
       new Date('2019-01-01'),
-      new Date('2019-12-31')
+      new Date('2019-12-31'),
+      'abc'
     ),
     new Place(
       'p3',
@@ -31,7 +36,8 @@ export class PlacesService {
       'https://i1.trekearth.com/photos/138102/dsc_0681.jpg',
       99.99,
       new Date('2019-01-01'),
-      new Date('2019-12-31')
+      new Date('2019-12-31'),
+      'abc'
     ),
   ];
 
@@ -40,10 +46,24 @@ export class PlacesService {
     return [...this._places];
   }
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   getPlace(id: string) {
     // eslint-disable-next-line no-underscore-dangle
     return {...this._places.find(p => p.id === id)};
+  }
+
+  addPlace(title: string, description: string, price: number, dateFrom:  Date, dateTo: Date) {
+    const newPlace = new Place(
+      Math.random().toString(),
+      title,
+      description,
+      'https://i1.trekearth.com/photos/138102/dsc_0681.jpg',
+      price,
+      dateFrom,
+      dateTo,
+      this.authService.userId,
+    );
+    this._places.push(newPlace);
   }
 }
