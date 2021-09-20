@@ -1,7 +1,8 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable no-underscore-dangle */
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { take, map } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
 import { Place } from './place.model';
 
@@ -9,7 +10,7 @@ import { Place } from './place.model';
   providedIn: 'root'
 })
 export class PlacesService {
-  private _places = new BehaviorSubject<Places[]>([
+  private _places = new BehaviorSubject<Place[]>([
     new Place(
       'p1',
       'Manhattan Mansion',
@@ -44,7 +45,6 @@ export class PlacesService {
 
   get places() {
     // eslint-disable-next-line no-underscore-dangle
-    // return [...this._places];
     return this._places.asObservable();
   }
 
@@ -52,7 +52,13 @@ export class PlacesService {
 
   getPlace(id: string) {
     // eslint-disable-next-line no-underscore-dangle
-    return {...this._places.find(p => p.id === id)};
+    return this.places.pipe(
+      take(1),
+      map(places => {
+        return {...places.find(p => p.id === id)};
+      })
+    );
+
   }
 
   addPlace(title: string, description: string, price: number, dateFrom:  Date, dateTo: Date) {
@@ -66,7 +72,6 @@ export class PlacesService {
       dateTo,
       this.authService.userId,
     );
-    // this._places.push(newPlace);
     this.places.pipe(take(1)).subscribe(places => {
       this._places.next(places.concat(newPlace));
     });
