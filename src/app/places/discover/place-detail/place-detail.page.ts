@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ActionSheetController, ModalController, NavController } from '@ionic/angular';
+import { ActionSheetController, IonRouterOutlet, ModalController, NavController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { CreateBookingComponent } from '../../../bookings/create-booking/create-booking.component';
 import { Place } from '../../place.model';
@@ -22,6 +22,7 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
     private placesService: PlacesService,
     private modalCtrl: ModalController,
     private actionSheetCtrl: ActionSheetController,
+    private routerOutlet: IonRouterOutlet,
   ) { }
 
   ngOnInit() {
@@ -74,6 +75,7 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
       component: CreateBookingComponent,
       // swipeToClose: true,
       // showBackdrop: true,
+      presentingElement: this.routerOutlet.nativeEl,
       componentProps: {
         selectedPlace: this.place,
         selectedMode: mode,
