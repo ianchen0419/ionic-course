@@ -42,6 +42,15 @@ export class NewOfferPage implements OnInit {
         validators: [Validators.required],
       }),
     });
+
+    setTimeout(() => {
+      const login = this.form.controls.title;
+      login.setErrors({
+        notUnique: true
+      });
+      login.markAsTouched();
+    });
+
   }
 
   onCreateOffer(){

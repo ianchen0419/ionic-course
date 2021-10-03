@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { IonContent, LoadingController } from '@ionic/angular';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -20,7 +20,23 @@ export class AuthPage implements OnInit {
     private loadingCtrl: LoadingController,
   ) { }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  @ViewChild(IonContent) content: IonContent;
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  @ViewChild('f') myForm: NgForm;
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  @ViewChild('f', {read: ElementRef}) myFormEl: ElementRef;
+
   ngOnInit() {
+    setTimeout(() => {
+      const login = this.myForm.controls.email;
+      login.setErrors({
+        notUnique: true
+      });
+      login.markAsTouched();
+      const formControlTop = this.myFormEl.nativeElement.querySelector('input').offsetTop;
+      this.content.scrollToPoint(0, formControlTop, 300);
+    }, 2000);
   }
 
   onLogin() {
