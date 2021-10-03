@@ -60,7 +60,7 @@ Basic.args = {
 
 const Template2: Story<IonButton> = (args: IonButton) => ({
   props: args,
-  template: `<ion-button>你好</ion-button><ion-button>你好</ion-button>`,
+  template: `<ion-button>你好</ion-button><ion-button>你好你好</ion-button>`,
 });
 
 export const Two = Template2.bind({});
